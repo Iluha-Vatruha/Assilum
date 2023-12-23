@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public interface IOrientDisorder {
+package Illnesses;
+
+public interface IOrientDisorder extends Ilness{
+    void smackTheWall ();
 }

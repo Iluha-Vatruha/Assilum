@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public interface Ilness {
+package Illnesses;
+
+public interface Ilness {
+    void invoke() throws Exception;
+
 }
