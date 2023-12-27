@@ -1,10 +1,8 @@
 package Menu;
 
-import Patients.Dementi;
-import Patients.Epileptic;
-import Patients.Patient;
-import Patients.Shizo;
+import Patients.*;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,6 +13,8 @@ public class CreateMenu {
         Random random = new Random();
         int age = 30;
         String name = "John";
+        List<Patient> patients = Patients.getPatients().getList();
+
         while (true){
             try{
                 System.out.println("Enter name. Should be not empty.");
@@ -40,9 +40,9 @@ public class CreateMenu {
             }
 
             switch (option){
-                case "1": Patient.patients.add(new Shizo(name, age, random.nextInt(4, 8))); return;
-                case "2": Patient.patients.add(new Dementi(name, age, random.nextInt(4, 8))); return;
-                case "3": Patient.patients.add(new Epileptic(name, age, random.nextInt(4, 8))); return;
+                case "1": patients.add(new Shizo(name, age, random.nextInt(4, 8))); return;
+                case "2": patients.add(new Dementi(name, age, random.nextInt(4, 8))); return;
+                case "3": patients.add(new Epileptic(name, age, random.nextInt(4, 8))); return;
                 case "4": return;
                 default: System.out.println("Error. Try again."); break;
             }

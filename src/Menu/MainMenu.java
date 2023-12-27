@@ -2,7 +2,9 @@ package Menu;
 
 
 import Patients.Patient;
+import Patients.Patients;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -20,8 +22,9 @@ public class MainMenu {
             option = s.nextLine();
             switch (option){
                 case "1": {
-                    for (int i = 0; i < Patient.patients.size(); i++) {
-                        System.out.println(String.valueOf(i+1) + Patient.patients.get(i));
+                    List<Patient> patients = Patients.getPatients().getList();
+                    for (int i = 0; i < patients.size(); i++) {
+                        System.out.println(String.valueOf(i+1) + patients.get(i));
                     }
                 } break;
                 case "2": CreateMenu.call(); break;

@@ -22,8 +22,8 @@ public class Epileptic extends Patient implements IAgression, IOrientDisorder, I
             System.out.println("Patient " + name + " tried to bite the doctor.");
         }
         else{
-            doctor.health -= 1;
-            if (doctor.health <= 0){
+            doctor.setHealth(doctor.getHealth() - 1);
+            if (doctor.getHealth() <= 0){
                 throw new Exception ("Patients killed the doctor.");
             }
             else{

@@ -24,7 +24,7 @@ public class Shizo extends Patient implements ISleepIssue, IOrientDisorder {
             System.out.println("Patient " + name + " tried to smack the wall.");
         }
         else {
-            health =- 1;
+            health -= 1;
             if (health <= 0){
                 throw new RuntimeException("You failed. Patient is dead");
             }

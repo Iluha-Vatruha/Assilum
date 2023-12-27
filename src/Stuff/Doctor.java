@@ -6,9 +6,10 @@ import javax.print.Doc;
 
 public class Doctor {
     private static final Doctor doctor = new Doctor();
-    public int age;
-    public String name;
-    public int health;
+    private int age;
+    private String name;
+    private int health;
+
     private Doctor(){
         age = 40;
         name = "Livsey";
@@ -18,10 +19,34 @@ public class Doctor {
         return doctor;
     }
     public void giveDrugs(Patient patient){
-        if (patient.drugsTaken){
+        if (patient.isDrugsTaken()){
             System.out.println("Doctor says: You already got your pills. Go to your cell.");
             return;
         }
-        patient.drugsTaken = true;
+        patient.setDrugsTaken(true);
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

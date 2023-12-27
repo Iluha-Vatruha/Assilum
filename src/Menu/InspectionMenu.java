@@ -1,8 +1,10 @@
 package Menu;
 
 import Patients.Patient;
+import Patients.Patients;
 import Stuff.Doctor;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class InspectionMenu {
@@ -10,6 +12,7 @@ public class InspectionMenu {
         Scanner s = new Scanner(System.in);
         String option;
         int patientID = -1;
+        List<Patient> patients = Patients.getPatients().getList();
 
         while (true) {
             try{
@@ -23,18 +26,18 @@ public class InspectionMenu {
                     case "1": {
                         System.out.println("Input patients ID.");
                         patientID = Integer.valueOf(s.nextLine()) - 1;
-                        if (patientID < 0 || patientID >= Patient.patients.size()){
+                        if (patientID < 0 || patientID >= patients.size()){
                             throw new RuntimeException("Invalid id");
                         }
-                        Doctor.getDoctor().giveDrugs(Patient.patients.get(patientID));
+                        Doctor.getDoctor().giveDrugs(patients.get(patientID));
                     } break;
                     case "2": {
                         System.out.println("Input patients ID.");
                         patientID = Integer.valueOf(s.nextLine()) - 1;
-                        if (patientID < 0 || patientID >= Patient.patients.size()){
+                        if (patientID < 0 || patientID >= patients.size()){
                             throw new RuntimeException("Invalid id");
                         }
-                        Patient.patients.get(patientID).invoke();
+                        patients.get(patientID).invoke();
                     } break;
                     case "3": return;
                     default: System.out.println("Sir, you need to input number, not junks of bunks.");break;
@@ -43,15 +46,15 @@ public class InspectionMenu {
             }
             catch (RuntimeException exception){
                 System.out.println(exception.getMessage());
-                if (!(patientID < 0 || patientID >= Patient.patients.size())){
-                    if (Patient.patients.get(patientID).health <= 0){
-                        Patient.patients.remove(patientID);
+                if (!(patientID < 0 || patientID >= patients.size())){
+                    if (patients.get(patientID).getHealth() <= 0){
+                        patients.remove(patientID);
                     }
                 }
             } catch (Exception e) {
                 System.out.println(
                         "Congratulations! " +
-                                Patient.patients.get(patientID).name + " bit the doctor to death."
+                                patients.get(patientID).getName() + " bit the doctor to death."
                         );
                 System.exit(0);
             }
